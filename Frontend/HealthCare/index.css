@@ -1,0 +1,46 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* body {
+  font-family: "Inter", "Montserrat", sans-serif;
+  background-color: #f6f9fc;
+}
+/* .container {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  font-family: "Inter", sans-serif;
+} */
+/* input, button {
+  width: 100%;
+  padding: 0.7rem;
+  margin: 0.5rem 0;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+}
+button {
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+  border: none;
+}
+button:hover {
+  background: #0056b3;
+} */
+/* body {
+  background-color: #f9fbfd;
+  font-family: "Poppins", sans-serif;
+} */
+/* 
+.card {
+  transition: all 0.2s ease-in-out;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+ */ 

@@ -1,0 +1,33 @@
+.chatbot {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1050;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Add a nice entrance effect */
+@keyframes slideInUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.chatbot {
+  animation: slideInUp 0.4s ease-out;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .chatbot {
+    bottom: 12px;
+    right: 12px;
+    width: 100%;
+    max-width: 360px;
+  }
+}

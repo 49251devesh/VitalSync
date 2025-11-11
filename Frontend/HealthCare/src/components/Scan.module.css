@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+.container {
+  min-height: 100vh;
+  background: linear-gradient(120deg, #e3f2fd, #f8f9fa);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+  padding: 2rem;
+}
+
+.glassCard {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  border-radius: 18px;
+  padding: 2.5rem;
+  max-width: 620px;
+  width: 100%;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #1976d2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.subtitle {
+  color: #444;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  padding: 0 0.5rem;
+}
+
+.options {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.optionButton {
+  background: #e3f2fd;
+  border: 2px solid #90caf9;
+  border-radius: 10px;
+  color: #1565c0;
+  padding: 0.8rem 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  flex: 1 1 45%;
+  justify-content: center;
+  min-width: 140px;
+}
+
+.optionButton:hover {
+  background: #bbdefb;
+}
+
+.hiddenInput {
+  display: none;
+}
+
+.previewContainer {
+  margin-top: 1.2rem;
+}
+
+.previewImage {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.analyzeBtn {
+  background: #1976d2;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  padding: 0.9rem 2rem;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  width: 100%;
+  justify-content: center;
+}
+
+.analyzeBtn:hover {
+  background: #1565c0;
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* CAMERA VIEW */
+.cameraSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.video {
+  width: 100%;
+  height: auto;
+  max-height: 350px;
+  border-radius: 12px;
+  background: transparent;
+  object-fit: cover;
+  display: block;
+}
+
+.cameraControls {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.captureBtn,
+.cancelBtn {
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.4rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease;
+  width: 140px;
+}
+
+.captureBtn {
+  background: #4caf50;
+  color: white;
+}
+
+.captureBtn:hover {
+  background: #43a047;
+}
+
+.cancelBtn {
+  background: #f44336;
+  color: white;
+}
+
+.cancelBtn:hover {
+  background: #d32f2f;
+}
+
+/* RESULT SECTION */
+.resultBox {
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 14px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  text-align: left;
+  word-break: break-word;
+}
+
+.resultHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #1565c0;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.resultLine {
+  margin: 0.4rem 0;
+  color: #333;
+  word-wrap: break-word;
+}
+
+.reportBlock {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+  margin-top: 1rem;
+  white-space: pre-wrap;
+  font-family: "Inter", monospace;
+  overflow-x: auto;
+}
+
+.resetBtn {
+  background: #e3f2fd;
+  border: none;
+  color: #1565c0;
+  padding: 0.7rem 1.4rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.resetBtn:hover {
+  background: #bbdefb;
+}
+
+.hiddenCanvas {
+  display: none;
+}
+
+/* ========================= */
+/* 📱 RESPONSIVE BREAKPOINTS */
+/* ========================= */
+
+/* Small screens (phones) */
+@media (max-width: 480px) {
+  .glassCard {
+    padding: 1.5rem;
+  }
+
+  .title {
+    font-size: 1.4rem;
+    flex-direction: column;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .optionButton {
+    flex: 1 1 100%;
+    padding: 0.7rem;
+  }
+
+  .analyzeBtn {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.95rem;
+  }
+
+  .resultBox {
+    padding: 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .reportBlock {
+    font-size: 0.85rem;
+    padding: 0.8rem;
+  }
+
+  .cameraControls {
+    flex-direction: column;
+  }
+
+  .captureBtn,
+  .cancelBtn {
+    width: 100%;
+  }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .glassCard {
+    max-width: 90%;
+  }
+
+  .optionButton {
+    flex: 1 1 45%;
+  }
+
+  .video {
+    max-height: 300px;
+  }
+
+  .resultBox {
+    font-size: 0.95rem;
+  }
+}
+
+/* Large screens (desktops) */
+@media (min-width: 1200px) {
+  .glassCard {
+    max-width: 700px;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .analyzeBtn {
+    font-size: 1rem;
+  }
+}

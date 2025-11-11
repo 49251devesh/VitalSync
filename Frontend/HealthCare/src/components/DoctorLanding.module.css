@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Nata+Sans:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
+
+.container {
+  min-height: 100vh;
+  background: linear-gradient(120deg, #e0f7fa, #e3f2fd, #ede7f6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+.horizontalCard {
+  background: #ffffff;
+  width: 90%;
+  max-width: 1000px;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 3rem;
+  transition: all 0.3s ease;
+}
+
+.left {
+  flex: 1;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1e3a8a;
+}
+
+.subtitle {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.toggleButtons {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.toggleButton {
+  background: #f1f5f9;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  font-weight: 500;
+  color: #374151;
+  transition: 0.3s;
+}
+
+.active {
+  background: #2563eb;
+  color: white;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.row {
+  display: flex;
+  gap: 1rem;
+}
+
+.input {
+  flex: 1;
+  padding: 0.7rem;
+  border: 1.4px solid #d1d5db;
+  border-radius: 0.6rem;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+}
+
+.input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 4px rgba(37, 99, 235, 0.3);
+  outline: none;
+}
+
+.dropdownContainer {
+  flex: 1;
+  position: relative;
+}
+
+.label {
+  font-size: 0.85rem;
+  color: #374151;
+  font-weight: 600;
+}
+
+.dropdownBox {
+  background: #f9fafb;
+  border: 1.5px solid #d1d5db;
+  border-radius: 0.6rem;
+  padding: 0.6rem;
+  cursor: pointer;
+  color: #111827;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.dropdownBox:hover {
+  border-color: #2563eb;
+}
+
+.dropdownMenu {
+  position: absolute;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-top: 0.4rem;
+  z-index: 10;
+  max-height: 150px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.dropdownItem {
+  padding: 0.5rem 0.8rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.dropdownItem:hover {
+  background: #e0f2fe;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+.tag {
+  background: #e0f2fe;
+  color: #1e3a8a;
+  border-radius: 1rem;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.tag button {
+  background: none;
+  border: none;
+  color: #1e3a8a;
+  font-size: 1rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.button {
+  background: linear-gradient(90deg, #2563eb, #3b82f6);
+  color: white;
+  border: none;
+  padding: 0.9rem;
+  border-radius: 0.6rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 0.95rem;
+  margin-top: 0.8rem;
+}
+
+.button:hover {
+  background: linear-gradient(90deg, #1e40af, #2563eb);
+  transform: translateY(-2px);
+}
+
+.message {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #111827;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .horizontalCard {
+    flex-direction: column;
+    padding: 1.5rem;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+}
