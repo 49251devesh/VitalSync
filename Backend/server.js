@@ -18,10 +18,10 @@ mongoose.connect("mongodb://127.0.0.1:27017/vitalsync", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-.then(() => console.log("✅ MongoDB Connected"))
-.catch((err) => console.error("❌ MongoDB Error:", err));
+  .then(() => console.log("✅ MongoDB Connected"))
+  .catch((err) => console.error("❌ MongoDB Error:", err));
 //uplods here summary
-app.use("/uploads", express.static("uploads")); 
+app.use("/uploads", express.static("uploads"));
 //routes
 app.use("/api/hospitals", require("./routes/hospitalRoutes"));
 app.use("/api/doctors", require("./routes/doctorRoutes"));
@@ -48,7 +48,7 @@ const specialtiesList = [
 function mapConditionToDeptSpecialty(condition) {
   const cond = condition.toLowerCase();
   const mapping = {
-    heart: ["Cardiology", "Heart"],
+    heart: ["Cardiology", "Heart", "Cardio"],
     brain: ["Neurology", "Brain"],
     bones: ["Orthopedics", "Bones"],
     trauma: ["Emergency", "Trauma"],
@@ -117,14 +117,14 @@ app.post("/newlog", async (req, res) => {
       return {
         name: tags.name || `Hospital ${Math.floor(Math.random() * 10000)}`,
         address: {
-          line1: tags["addr:street"] || `Street ${Math.floor(Math.random()*100)}`,
-          city: tags["addr:city"] || `City ${Math.floor(Math.random()*100)}`,
-          state: tags["addr:state"] || `State ${Math.floor(Math.random()*100)}`,
-          pincode: tags["addr:postcode"] || `${Math.floor(100000 + Math.random()*900000)}`,
+          line1: tags["addr:street"] || `Street ${Math.floor(Math.random() * 100)}`,
+          city: tags["addr:city"] || `City ${Math.floor(Math.random() * 100)}`,
+          state: tags["addr:state"] || `State ${Math.floor(Math.random() * 100)}`,
+          pincode: tags["addr:postcode"] || `${Math.floor(100000 + Math.random() * 900000)}`,
         },
         contact: {
-          phone: tags.phone || tags["contact:phone"] || `+91${Math.floor(1000000000 + Math.random()*9000000000)}`,
-          email: tags["contact:email"] || `contact${Math.floor(Math.random()*1000)}@hospital.com`,
+          phone: tags.phone || tags["contact:phone"] || `+91${Math.floor(1000000000 + Math.random() * 9000000000)}`,
+          email: tags["contact:email"] || `contact${Math.floor(Math.random() * 1000)}@hospital.com`,
         },
         departments,
         specialties,
@@ -148,40 +148,25 @@ app.post("/newlog", async (req, res) => {
     }));
     await Hospital.bulkWrite(bulkOps);
 
-    // const allHospitals = await Hospital.find();
-    // const nearestHospitals = allHospitals
-    //   .map(h => {
-    //     const distance = getDistance(location.latitude, location.longitude, h.location.coordinates[1], h.location.coordinates[0]);
-    //     return { ...h.toObject(), distance };
-    //   })
-    //   .sort((a, b) => {
-    //     if (a.isTopHospital && !b.isTopHospital) return -1;
-    //     if (!a.isTopHospital && b.isTopHospital) return 1;
 
-    //     if ((a.matchedDepartments?.length || 0) && !(b.matchedDepartments?.length || 0)) return -1;
-    //     if (!(a.matchedDepartments?.length || 0) && (b.matchedDepartments?.length || 0)) return 1;
+    const allHospitals = await Hospital.find();
+    const nearestHospitals = allHospitals
+      .filter(h => h.location && Array.isArray(h.location.coordinates) && h.location.coordinates.length === 2)
+      .map(h => {
+        const [lon, lat] = h.location.coordinates;
+        const distance = getDistance(location.latitude, location.longitude, lat, lon);
+        return { ...h.toObject(), distance };
+      })
+      .sort((a, b) => {
+        if (a.isTopHospital && !b.isTopHospital) return -1;
+        if (!a.isTopHospital && b.isTopHospital) return 1;
 
-    //     return a.distance - b.distance;
-    //   })
-    //   .slice(0, 10);
-const allHospitals = await Hospital.find();
-const nearestHospitals = allHospitals
-  .filter(h => h.location && Array.isArray(h.location.coordinates) && h.location.coordinates.length === 2)
-  .map(h => {
-    const [lon, lat] = h.location.coordinates;
-    const distance = getDistance(location.latitude, location.longitude, lat, lon);
-    return { ...h.toObject(), distance };
-  })
-  .sort((a, b) => {
-    if (a.isTopHospital && !b.isTopHospital) return -1;
-    if (!a.isTopHospital && b.isTopHospital) return 1;
+        if ((a.matchedDepartments?.length || 0) && !(b.matchedDepartments?.length || 0)) return -1;
+        if (!(a.matchedDepartments?.length || 0) && (b.matchedDepartments?.length || 0)) return 1;
 
-    if ((a.matchedDepartments?.length || 0) && !(b.matchedDepartments?.length || 0)) return -1;
-    if (!(a.matchedDepartments?.length || 0) && (b.matchedDepartments?.length || 0)) return 1;
-
-    return a.distance - b.distance;
-  })
-  .slice(0, 10);
+        return a.distance - b.distance;
+      })
+      .slice(0, 10);
 
 
     const keepIds = nearestHospitals.map(h => h._id);
@@ -250,7 +235,7 @@ app.post("/api/ai/analyze", upload.single("image"), async (req, res) => {
     });
 
     // Clean up temporary upload file
-    fs.unlink(req.file.path, () => {});
+    fs.unlink(req.file.path, () => { });
 
     res.json({
       success: true,
